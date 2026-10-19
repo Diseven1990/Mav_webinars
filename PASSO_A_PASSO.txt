@@ -1,0 +1,74 @@
+MAV PULSE | GUIA DE INSTALAÇÃO
+================================
+Protótipo do webinar "Jornada do Consumidor"
+
+NOME DO PROJETO
+- Plataforma: MAV Pulse
+- Projeto Supabase: mav-pulse
+- Repositório GitHub: mav-pulse
+
+1. PREPARAR O SUPABASE
+1.1. Entre em https://supabase.com/dashboard, escolha New project e crie um projeto com nome "mav-pulse". Escolha uma região europeia próxima, defina e guarde a palavra-passe da base de dados e aguarde a criação.
+1.2. Em Authentication > Providers / Sign In / Anonymous Sign-Ins, ative "Allow anonymous sign-ins" (a designação pode variar). Permite a entrada por nome, sem e-mail dos formandos.
+1.3. Em Authentication > Users > Add user, crie uma conta com o seu e-mail e uma palavra-passe, com confirmação, para usar como apresentador. Não use uma conta anónima como apresentador.
+1.4. Em SQL Editor > New query, copie TODO o conteúdo de supabase.sql, cole e execute com Run.
+1.5. Volte a Authentication > Users; copie o UUID / User ID da sua conta do apresentador. No SQL Editor, execute (substitua o texto entre aspas):
+
+insert into public.jornada_hosts(user_id)
+values ('COLE_AQUI_O_UUID_DO_APRESENTADOR');
+
+1.6. Abra o botão Connect do projeto ou Project Settings > API Keys. Copie o Project URL e a chave Publishable (começa por sb_publishable_).
+
+2. CONFIGURAR OS FICHEIROS
+Abra config.js num editor de texto e preencha (não altere o nome das propriedades):
+
+window.JORNADA_CONFIG = {
+  supabaseUrl: 'https://SEU-PROJETO.supabase.co',
+  supabaseAnonKey: 'sb_publishable_EXEMPLO'
+};
+
+AVISO: esta chave é pública e adequada ao browser. NUNCA publique a secret key ou service_role.
+Guarde config.js.
+
+3. COLOCAR ONLINE NO GITHUB PAGES
+3.1. No GitHub, crie um repositório público "mav-pulse".
+3.2. No repositório, escolha Add file > Upload files. Faça upload de TODOS os ficheiros desta pasta, individualmente ou arrastando-os de dentro da pasta. index.html tem de ficar na RAIZ do repositório, não numa subpasta. Faça Commit changes.
+3.3. Vá a Settings > Pages. Escolha Deploy from a branch, selecione main e / (root) e Save.
+3.4. O endereço esperado terá o formato https://SEU-UTILIZADOR.github.io/mav-pulse/ . O endereço real é o que o GitHub indicar em Settings > Pages.
+
+4. TESTE ANTES DO WEBINAR
+4.1. No computador, abra o URL publicado + apresentador.html. Inicie sessão e carregue em Criar sessão.
+4.2. Clique em Abrir ecrã OBS. Aparecem os slides sem os controlos privados.
+4.3. Clique em Copiar link de entrada. Abra o link num telemóvel ou numa janela privada do navegador, para garantir que não usa a mesma conta de apresentador.
+4.4. Entre com um nome, por exemplo "Teste". Verifique no painel "Ligados agora" e "Inscritos".
+4.5. Avance um slide no painel: a vista do OBS deve avançar também. Lance um jogo: a página do formando recebe-o automaticamente e a vista OBS mostra o desafio. Envie uma resposta e revele os resultados.
+4.6. Teste ainda com 2 ou 3 dispositivos diferentes e a transmissão OBS, antes de usar em direto.
+
+5. LIGAR AO OBS E YOUTUBE
+- OBS > Fontes > + > Navegador / Browser Source. Cole o URL de "Abrir ecrã OBS" e defina 1280x720 ou 1920x1080.
+- Transmita essa cena para o YouTube. No painel do apresentador, controle os slides e os jogos. O OBS recebe as alterações através do Supabase.
+- Os formandos assistem no YouTube e respondem no telemóvel ou em outra janela. A imagem do YouTube pode ter atraso; a pergunta também aparece diretamente no dispositivo do formando.
+
+SINCRONIZAÇÃO
+- O apresentador altera o número do slide e o estado do jogo na tabela sessions do Supabase.
+- A vista de transmissão observa a sessão por Realtime e atualiza slides/overlay; tem também atualizações periódicas como salvaguarda.
+- A página dos participantes observa a mesma sessão e alterna entre sala de espera, minijogo e resultados.
+- As respostas são corrigidas na base de dados por uma função SQL, e o ranking só é mostrado ao público quando o apresentador revelar resultados.
+- O contador "Ligados agora" usa Realtime Presence; conta participantes com ligação ativa, não espectadores do YouTube.
+- Os slides NÃO aparecem automaticamente no telemóvel do formando: ele acompanha os slides pelo YouTube e vê apenas os jogos na página MAV Pulse.
+- Use os comandos do painel do apresentador para mudar os slides; navegar diretamente na página slides.html não sincroniza com os outros ecrãs.
+
+SEGURANÇA E ESTADO
+- Não partilhe o endereço de apresentador nem as credenciais do apresentador com os participantes. A proteção real das ações é feita pelas permissões configuradas em supabase.sql.
+- Os nomes/pseudónimos aparecem no ranking. Evite recolher dados pessoais desnecessários.
+- Este é um protótipo ainda não ensaiado em produção: faça um teste completo com contas reais, dispositivos diferentes, ligação móvel e OBS antes de qualquer webinar público.
+
+FICHEIROS
+index.html = página de entrada
+apresentador.html = painel privado
+participar.html = área dos formandos
+transmitir.html = vista OBS
+slides.html = apresentação original
+games.js = cinco desafios
+supabase.sql = estrutura, regras e pontuação
+config.js = ligação ao Supabase

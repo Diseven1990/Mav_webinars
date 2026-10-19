@@ -1,0 +1,76 @@
+JORNADA INTERATIVA · WEBINAR JORNADA DO CONSUMIDOR
+===================================================
+
+O QUE ESTÁ INCLUÍDO
+- index.html: página inicial.
+- apresentador.html: painel privado com contador de presenças, slides,
+  abertura manual de jogos, estatísticas, ranking e link para participantes.
+- participar.html: entrada com nome/pseudónimo e código de seis caracteres,
+  sala de espera e cinco desafios com pontuação.
+- transmitir.html: vista de 16:9 para transmitir no OBS, sem comandos privados.
+- slides.html: apresentação original, conservando os seus 11 ecrãs.
+- games.js: perguntas, opções, soluções e explicações dos cinco desafios.
+- config.js: configuração opcional do Supabase.
+- supabase.sql: esquema, autenticação, permissões e correção das respostas no servidor.
+
+EXPERIMENTAR JÁ (DEMONSTRAÇÃO LOCAL)
+1. Descompacte a pasta e abra um terminal dentro dela.
+2. Execute: python3 -m http.server 8080
+3. Visite http://localhost:8080/apresentador.html no navegador.
+4. Clique em «Criar sessão» e abra «Abrir ecrã OBS» noutro separador.
+5. Copie o link de entrada e abra-o noutro separador DO MESMO NAVEGADOR.
+6. Introduza um nome; lance um desafio; responda; revele os resultados.
+O modo demo usa armazenamento local e só sincroniza separadores que partilham
+uma origem e o mesmo armazenamento do navegador. Não funciona pela Internet.
+
+ATIVAR A PARTICIPAÇÃO REAL PELA INTERNET
+1. Crie um projeto Supabase em https://supabase.com.
+2. No painel Supabase: Authentication > Providers > Anonymous Sign-Ins:
+   ative as entradas anónimas.
+3. Em Authentication > Users crie a conta do apresentador com e-mail
+   e palavra-passe, ou crie e confirme uma conta em segurança.
+4. Execute supabase.sql no SQL Editor.
+5. Consulte o UUID do apresentador em Authentication > Users e execute no
+   SQL Editor, substituindo o UUID do exemplo:
+   insert into public.jornada_hosts(user_id)
+   values ('UUID_DO_UTILIZADOR_APRESENTADOR');
+6. Em Project Settings > API (ou secção correspondente), copie o Project URL
+   e a chave publicável/anon (NUNCA a chave service_role/secret).
+7. Edite config.js e preencha supabaseUrl e supabaseAnonKey.
+8. Publique toda a pasta num alojamento HTTPS (por exemplo, GitHub Pages).
+9. Abra apresentador.html, entre com as credenciais do apresentador e crie
+   a sessão. Partilhe com os formandos o link de participação (com o código).
+10. Em OBS, adicione uma «Fonte de navegador» com o endereço do ecrã OBS,
+    defina 1280x720 ou 1920x1080, e envie essa cena para o YouTube.
+
+NOTAS IMPORTANTES
+- Os slides, desafios e resultados são sincronizados através do Supabase.
+- Quem vê o YouTube pode ter atraso no vídeo. É por isso que as perguntas
+  aparecem também na página do jogo e não usam bónus pela rapidez.
+- O anfitrião controla quando abre e fecha cada desafio; o sistema não
+  lança automaticamente os jogos quando se muda de slide.
+- «Ligados agora» usa Presença Realtime, ou seja, ligações ao jogo,
+  não espectadores do YouTube. «Inscritos» conta todos os nomes registados.
+- As respostas são pontuadas no servidor, evitando alterar pontuações
+  apenas através das ferramentas do navegador.
+- Cada participante pode responder uma vez por desafio. Depois de revelar
+  respostas, todos podem ver o ranking e a explicação.
+- O nome é público no ranking revelado. Recomenda-se usar pseudónimos e
+  eliminar os registos de sessões antigas quando deixarem de ser necessários.
+- As imagens originais dos slides vêm de serviços externos e exigem Internet.
+- QR Code: funcionalidade opcional que chama um serviço externo, por isso
+  evite utilizá-lo se o endereço de entrada não puder ser partilhado.
+- As credenciais do Supabase ainda não foram fornecidas; a sincronização
+  entre dispositivos diferentes NÃO está ativa até concluir a configuração.
+
+JOGOS RELACIONADOS COM A APRESENTAÇÃO
+Slide 02  Ordenar descoberta, consideração, decisão, compra e pós-compra.
+Slide 05  Associar conteúdos, comparações, garantias, pagamento e seguimento.
+Slide 06  Identificar três problemas de checkout que causam abandono.
+Slide 09  Quiz sobre não linearidade, métricas, compra e pós-compra.
+Slide 10  Decidir as quatro ações adequadas para a marca RAIZ.
+
+ESTADO
+Protótipo funcional para demonstração local e preparado para ser ligado
+à base de dados Supabase. É necessário testar a instalação online com
+contas e dispositivos reais antes de o usar numa transmissão pública.
