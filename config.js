@@ -1,4 +1,4 @@
 window.JORNADA_CONFIG = {
   supabaseUrl: 'https://ztkkyygcmwhnhiviatvc.supabase.co',
-  supabaseAnonKey: 'sb_publishable_AFy-s97Qoc5BZ1ut1Y16rQ_ESgyF17y'
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0a2t5eWdjbXdobmhpdmlhdHZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzOTcxMDAsImV4cCI6MjEwNzk3MzEwMH0.La7FvGJXdw9ZHxM_HZCq4o7uVHgglY749TFWiPEqEjc'
 };
