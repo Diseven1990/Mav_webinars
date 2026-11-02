@@ -1,0 +1,73 @@
+ESTADO ONLINE · 02/11/2026
+Configuração instalada no Supabase e modo online ativo.
+Para uma demonstração local isolada, mudar mode para demo em config.js.
+
+MAV PULSE · CONTEÚDO QUE VENDE
+============================
+Oito atividades em direto, baseadas nos 12 slides do webinar.
+Adaptação do modelo fornecido. O projeto original não foi alterado.
+
+EXPERIMENTAR NO COMPUTADOR
+1. Abrir um terminal nesta pasta.
+2. Executar: python3 -m http.server 8080
+3. Abrir http://localhost:8080/index.html no navegador.
+4. Abrir o painel do apresentador e criar uma sessão.
+5. Copiar o endereço de participação e abrir noutro separador do MESMO navegador.
+6. Entrar com um nome ou pseudónimo.
+7. No painel, lançar uma atividade, responder no separador do formando e revelar os resultados.
+8. Abrir o ecrã OBS para verificar a transmissão e o regresso aos slides.
+
+Para experimentar sem ligação ao Supabase, selecionar mode = demo em config.js. Este modo sincroniza apenas
+separadores da mesma origem e do mesmo navegador. Não permite que formandos
+participem a partir de outros computadores ou telemóveis.
+Usar um servidor local, como indicado acima, em vez de abrir os HTML diretamente.
+
+OITO ATIVIDADES
+Após o slide 03 · Reconhecer um conteúdo útil · 2 perguntas
+Após o slide 04 · Identificar a dúvida do cliente · 2 perguntas
+Após o slide 05 · Ligar a característica ao benefício · 3 associações
+Após o slide 06 · Organizar a mensagem · 4 cartões
+Após o slide 07 · Escolher como começar · 1 pergunta
+Após o slide 08 · Escolher provas credíveis · 3 opções entre 6
+Após o slide 09 · Adequar o convite ao momento · 3 associações
+Após o slide 10 · Escolher o que avaliar · 2 situações
+
+Lançar cada atividade apenas DEPOIS de explicar o slide indicado. Não existem
+aberturas automáticas. O apresentador controla o ritmo e revela as respostas.
+O slide 11 mantém a revisão da mensagem. O slide 12 mantém o exercício para
+entrega posterior no campus virtual: não faz parte da pontuação em direto.
+
+PONTUAÇÃO
+Cada atividade vale até 100 pontos. Total possível: 800 pontos.
+Perguntas e associações: proporção de respostas certas, arredondada.
+Ordenação: 100 pontos quando toda a sequência está correta; 0 caso contrário.
+Seleção de provas: escolher exatamente três opções; cada acerto vale um terço.
+Não existe bónus de rapidez. Só é aceite uma entrega por atividade e participante.
+Após a revelação, cada formando vê as soluções, a explicação e a classificação.
+
+LIGAÇÃO ONLINE
+Consultar PASSO_A_PASSO.txt. As definições públicas de ligação fornecidas foram
+mantidas em config.js, com o modo online ativo nesta cópia.
+O ficheiro supabase.sql usa novas tabelas e funções com o prefixo conteudo_.
+Não substitui as tabelas nem as respostas do webinar anterior.
+A instalação e a autorização do apresentador foram concluídas no projeto fornecido.
+
+FICHEIROS
+index.html · entrada
+apresentador.html / presenter.js · painel do apresentador
+participar.html / participant.js · participação dos formandos
+transmitir.html / broadcast.js · ecrã de transmissão
+slides.html · os 12 slides atuais, com navegação sincronizada
+core.js · sessões, autenticação, respostas e sincronização
+games.js · oito atividades, soluções e pontuação de demonstração
+config.js · ligação pública fornecida e seleção do modo
+supabase.sql · instalação independente e correção no servidor
+GUIAO-ATIVIDADES.md · momentos de lançamento e explicações
+exercicio-campus-virtual.txt · exercício posterior ao webinar
+
+VERIFICAÇÃO
+Testados localmente os oito percursos de resposta, a pontuação, a revelação,
+o regresso aos slides, a sincronização dos 12 slides e a adaptação ao telemóvel.
+Testadas as funções SQL num PostgreSQL temporário, incluindo respostas parciais,
+a recusa de entregas repetidas e o acesso aos resultados.
+O Supabase real foi instalado separadamente do webinar anterior. O OBS real não foi ensaiado.
