@@ -7,6 +7,10 @@ function mode(){const l=P.c.live;$('connectionTag').textContent=l?'Online / Supa
 async function authenticate(){if(!P.c.live)return;const u=await P.c.getAuthUser();if(u&&!u.is_anonymous)return;const email=$('email').value.trim(),password=$('password').value;if(!email||!password)throw Error('Preencha o e-mail e a palavra-passe do apresentador.');await P.c.login(email,password);}
 async function init(){try{await P.c.init();mode();const sid=localStorage.getItem('concorrencia_last_session');if(sid)$('resumeSession').classList.remove('hidden');$('startSession').addEventListener('click',async()=>{try{$('startSession').disabled=true;await authenticate();P.s=await P.c.createSession();localStorage.setItem('concorrencia_last_session',P.s.id);await dashboard();}catch(e){err('loginError',e);$('startSession').disabled=false}});$('resumeSession').addEventListener('click',async()=>{try{await authenticate();P.s=await P.c.getById(sid);await dashboard();}catch(e){err('loginError',e)}});bind();}catch(e){err('loginError',e)}}
 function bind(){
+ const frame=$('slidePreview');
+ $('fullSlides').onclick=async()=>{try{await frame.requestFullscreen();frame.contentWindow.focus()}catch{window.open('slides.html#slide-'+(P.s.slide+1),'_blank','noopener')}};
+ window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data?.type==='CONCORRENCIA_NAV'&&Number.isInteger(e.data.slide)&&P.s&&P.s.phase==='lobby')setSlide(e.data.slide-P.s.slide)});
+
  $('prevSlide').onclick=()=>setSlide(-1);$('nextSlide').onclick=()=>setSlide(1);
  $('slidePreview').addEventListener('load',()=>preview());
  $('copyLink').onclick=async()=>{const url=joinUrl();try{await navigator.clipboard.writeText(url);$('copyLink').textContent='Link copiado ✓';setTimeout(()=>$('copyLink').textContent='Copiar link de entrada',1900)}catch{window.prompt('Copie o link:',url)}};
@@ -18,7 +22,7 @@ function joinUrl(){const u=new URL('participar.html',location.href);u.searchPara
 async function dashboard(){if(!P.s)return;$('loginPane').classList.add('hidden');$('dashboard').classList.remove('hidden');$('code').textContent=P.s.code;$('joinUrl').textContent=joinUrl();$('online').textContent='0';await P.c.watch('presenter');P.c.on(type=>{if(type==='data'){refresh();scheduleStats()}if(type==='presence')renderPresence()});await refresh();await reloadStats();setInterval(()=>{if(P.s){renderPresence();reloadStats()}},5000);}
 let refreshBusy=false;
 async function refresh(){if(refreshBusy)return;refreshBusy=true;try{P.s=await P.c.refresh();$('code').textContent=P.s.code;renderGames();renderControl();preview();}catch(e){console.error(e)}finally{refreshBusy=false}}
-function preview(){if(!P.s)return;$('slideCount').textContent=String(P.s.slide+1).padStart(2,'0')+' / 20';$('slidePreview').contentWindow?.postMessage({type:'CONCORRENCIA_SET_SLIDE',slide:P.s.slide},'*');}
+function preview(){if(!P.s)return;$('slideCount').textContent=String(P.s.slide+1).padStart(2,'0')+' / 20';$('slidePreview').contentWindow?.postMessage({type:'CONCORRENCIA_SET_SLIDE',slide:P.s.slide,code:P.s.code,activity:P.s.phase==='playing'?H.game(P.s.active_game):null},'*');}
 async function setSlide(delta){if(!P.s)return;const slide=Math.max(0,Math.min(19,P.s.slide+delta));if(slide===P.s.slide)return;try{P.s=await P.c.update({slide});preview();renderGames()}catch(e){alert(e.message)}}
 function renderGames(){const active=P.s?.active_game,phase=P.s?.phase;$('gamesList').innerHTML=CONCORRENCIA_GAMES.map(g=>{
  const isOn=g.id===active;const isBusy=phase!=='lobby';
