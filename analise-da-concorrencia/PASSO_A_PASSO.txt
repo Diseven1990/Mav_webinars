@@ -1,0 +1,67 @@
+ENSAIO LOCAL
+Servir esta pasta por HTTP no computador. Abrir index.html e escolher «Sou o apresentador». Criar a sessão e abrir o endereço de participação noutro separador do mesmo navegador.
+
+MAV PULSE · ATIVAR ESTE WEBINAR ONLINE
+====================================
+
+1. INSTALAR AS TABELAS DESTE WEBINAR
+Abrir o projeto Supabase já usado pelo MAV Pulse e executar supabase.sql no
+editor SQL. O ficheiro cria concorrencia_hosts, concorrencia_sessions,
+concorrencia_participants e concorrencia_answers, além das funções e permissões.
+Não apaga nem altera as tabelas do webinar anterior.
+
+2. AUTORIZAR O APRESENTADOR
+Usar a conta de apresentador existente e obter o seu identificador de utilizador.
+Executar, substituindo o identificador entre aspas:
+
+insert into public.concorrencia_hosts(user_id)
+values ('UUID_DO_APRESENTADOR')
+on conflict do nothing;
+
+A autorização do webinar anterior não é copiada automaticamente.
+Manter as entradas anónimas ativas para os participantes, como no modelo original.
+
+3. ATIVAR O MODO ONLINE
+Em config.js, manter o endereço e a chave pública do projeto fornecido.
+Alterar apenas a última linha para:
+
+window.CONCORRENCIA_CONFIG.mode = 'online';
+
+Nunca colocar uma chave secreta ou service_role neste ficheiro.
+Para regressar à demonstração local, usar mode = 'demo'.
+
+4. PUBLICAR NUM ENDEREÇO PRÓPRIO
+Colocar os ficheiros desta pasta juntos num alojamento HTTPS, por exemplo numa
+subpasta do alojamento existente. Manter index.html na raiz dessa subpasta.
+Usar um endereço distinto para preservar o acesso ao webinar anterior.
+Não foi feita qualquer publicação automática.
+
+5. ENSAIAR COM DISPOSITIVOS DIFERENTES
+No computador do apresentador, abrir apresentador.html e iniciar sessão.
+Criar a sessão e copiar o endereço de participação.
+Num telemóvel ou numa janela privada, abrir o endereço e entrar com um pseudónimo.
+Lançar uma atividade, enviar a resposta, revelar os resultados e fechar a atividade.
+Confirmar o contador de participantes e o regresso à apresentação.
+Repetir com pelo menos outro dispositivo antes do webinar.
+
+6. LIGAR AO OBS
+No painel, abrir o ecrã OBS. Usar o seu endereço numa fonte de navegador do OBS,
+com dimensão de 1920 × 1080 ou 1280 × 720.
+Controlar os slides e as atividades pelo painel do apresentador.
+Os formandos acompanham a transmissão e respondem na página de participação.
+O ecrã de transmissão mostra a atividade aberta e, após a revelação, os resultados.
+As perguntas completas aparecem no dispositivo do formando.
+
+7. CONDUZIR AS ATIVIDADES
+Explicar primeiro cada slide. Depois, lançar a atividade indicada no painel.
+Aguardar pelas respostas. Revelar as soluções e comentar a explicação.
+Fechar a atividade para regressar aos slides.
+Consultar GUIAO-ATIVIDADES.md para a correspondência entre slides e atividades.
+
+NOTAS
+A chave em config.js é pública; as permissões e a correção ficam no Supabase.
+O modo online usa a biblioteca Supabase carregada pela Internet e o serviço Realtime.
+O QR Code opcional também usa um serviço externo. É possível partilhar só o link.
+O nome ou pseudónimo pode aparecer na classificação geral.
+A validação feita nesta entrega é local. O ensaio online depende da instalação
+no projeto real e da publicação dos ficheiros.

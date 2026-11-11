@@ -1,0 +1,6 @@
+window.CONCORRENCIA_CONFIG = {
+  supabaseUrl: 'https://ztkkyygcmwhnhiviatvc.supabase.co',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0a2t5eWdjbXdobmhpdmlhdHZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzOTcxMDAsImV4cCI6MjEwNzk3MzEwMH0.La7FvGJXdw9ZHxM_HZCq4o7uVHgglY749TFWiPEqEjc'
+};
+// Para ativar o modo online, seguir PASSO_A_PASSO.txt.
+window.CONCORRENCIA_CONFIG.mode = 'online';
