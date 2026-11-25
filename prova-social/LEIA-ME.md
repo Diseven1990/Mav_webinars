@@ -22,7 +22,7 @@ A vista do OBS é gerada no painel depois de criar a sessão, porque cada sessã
 
 1. Abra o painel do apresentador e inicie sessão com as credenciais habituais.
 2. Crie uma nova sessão. O painel indica o código de 6 caracteres e fornece um link para o YouTube ou chat.
-3. Os formandos introduzem o nome ou um pseudónimo e ficam na sala de espera.
+3. Mostre o QR Code apresentado no **painel do apresentador** ou na **vista OBS**, para os formandos entrarem diretamente com o código da sessão preenchido. Em alternativa, partilhe o link ou o código de seis caracteres. Os formandos introduzem o nome ou um pseudónimo e ficam na sala de espera.
 4. No slide final da apresentação, abra a cena do OBS que mostra a Missão NOVA.
 5. Carregue em **Iniciar decisão 1**; a pergunta aparece nos dispositivos dos formandos e na vista de transmissão.
 6. Quando decidir, carregue em **Revelar respostas**. A correção, as percentagens e a classificação ficam visíveis.
@@ -51,3 +51,7 @@ O guião do webinar desenvolve a fundamentação de cada escolha.
 - O ficheiro de apresentação do webinar é independente. **A apresentação não muda de slide automaticamente** com esta atividade. A vista específica do exercício é adicionada ao OBS como fonte de navegador e pode ser exibida numa cena própria.
 
 Se aparecer **"Could not find function ps_stats"** ou **"relation prova_social_answers does not exist"**, verifique se o [instalar.sql](instalar.sql) foi executado no projeto Supabase correto.
+
+## QR Code
+
+O painel e a vista OBS geram um QR Code diferente para cada sessão, apontando para o endereço de participação com o código previamente preenchido. O QR Code é gerado pelo serviço externo `api.qrserver.com`; ao gerar a imagem, o endereço público de participação (incluindo o código da sessão) é enviado a esse serviço. **Não** inclui nomes, palavras-passe ou respostas. Se não quiser utilizar um serviço externo, partilhe o link e o código apresentados no painel.
