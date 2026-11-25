@@ -112,7 +112,6 @@ async function loadMine(){if(!P.s||!current())return null;var r=await P.c.sb.fro
 async function myPoints(){if(!P.c.participantId)return 0;var r=await P.c.sb.from('prova_social_answers').select('points').eq('participant_id',P.c.participantId);if(r.error)throw r.error;return (r.data||[]).reduce(function(n,a){return n+Number(a.points)},0)}
 function optionsHTML(q){return q.answers.map(function(x,i){var letter='ABC'[i];return '<button type="button" class="choice" data-answer="'+letter+'"><span class="letter">'+letter+'</span><span>'+escapeHTML(x)+'</span></button>'}).join('')}
 async function playerRender(){var q=current(),s=P.s;text('playerIdentity',P.name);text('playerRound',String(Math.max(0,s.slide))+'/3');text('playerScore',await myPoints());E('playerFeedback').classList.add('hidden');E('playerFeedback').textContent='';E('playerRanking').innerHTML='';
-clearError('playerActionError');
 if(s.phase==='lobby'){text('playerTag','SALA DE ESPERA');text('playerTitle','Está na sessão.');text('playerDesc','Aguarde que o apresentador lance a primeira decisão. Pode continuar a acompanhar o webinar no YouTube.');E('playerChoices').innerHTML='';return}
 if(!q)return;
 text('playerTag','DECISÃO '+q.no+' DE 3 · '+q.topic);text('playerTitle',q.title);text('playerDesc',q.context);
@@ -138,7 +137,7 @@ else{main+='<div class="answerbox"><b>Opção '+q.correct+'</b><p>'+escapeHTML(q
 main+='</article>';var side='<article class="panel"><span class="overline">MISSÃO NOVA</span><h2 class="section-title">'+(s.phase==='playing'?'A aguardar respostas':'A escolha do grupo')+'</h2>';
 if(s.phase==='results'){try{await loadStats();side+=bars()+'<p class="overline">CLASSIFICAÇÃO</p>'+leaderboard(5)}catch(e){side+='<p>Não foi possível obter resultados.</p>'}}
 else{side+='<p>O apresentador irá revelar os resultados quando todos tiverem oportunidade de participar.</p><p class="code">0'+s.slide+' / 03</p>'}
-holder.innerHTML=main+'</article>'.replace('</article></article>','</article>')+side+'</article>';
+holder.innerHTML=main+side+'</article>';
 }
 async function obsStart(){try{var sid=qs('s');if(!/^[0-9a-f-]{36}$/i.test(sid))throw Error('Abra esta vista a partir do painel do apresentador.');await P.c.ensureAnonymous();P.s=await P.c.getById(sid);if(!isNova(P.s))throw Error('Sessão inválida.');await P.c.watch('viewer');await obsRender();polling(obsRender)}catch(e){error('obsError',e)}}
 async function init(){
