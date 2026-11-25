@@ -149,7 +149,7 @@ function renderLaunchGuide(s){
  var rows=stages.map(function(stage){
   var isDone=round>stage.no||(round===stage.no&&s.phase==='results');
   var isCurrent=!finish&&stage.no===next;
-  var status=isDone?'CONCLUÍDA':isCurrent?(s.phase==='playing'?'EM CURSO':'A LANÇAR'):'MAIS TARDE';
+  var status=isDone?'CONCLUÍDA':isCurrent?(s.phase==='playing'?'EM CURSO':s.phase==='lobby'?'PREPARAR':'A LANÇAR'):'MAIS TARDE';
   return '<div class="launch-step '+(isDone?'done':'')+' '+(isCurrent?'active':'')+'"><span class="launch-number">'+String(stage.no).padStart(2,'0')+'</span><div><div class="launch-row"><strong>'+escapeHTML(stage.title)+'</strong><span class="launch-state">'+status+'</span></div><div class="launch-cue">'+escapeHTML(stage.when)+'</div><p>'+escapeHTML(stage.detail)+'</p></div></div>';
  }).join('');
  E('launchGuide').innerHTML=top+rows;
