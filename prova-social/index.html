@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Missão NOVA | Prova Social · MAV Pulse</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#101510;--card:#1b241c;--card2:#273227;--line:#374338;--ink:#f3faef;--muted:#b4c2b1;--accent:#ccfb55;--bad:#fbb1a0;--good:#baf47c}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;min-height:100vh;color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;background:radial-gradient(circle at 100% 0%,#263822 0,transparent 38%),var(--bg)}
+button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}
+a{color:var(--accent)}.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}.top{border-bottom:1px solid var(--line);min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}.wordmark{display:flex;align-items:center;gap:12px;font-size:15px;letter-spacing:1.5px;font-weight:900}.symbol{display:grid;place-items:center;background:var(--accent);color:#0c140c;width:34px;height:34px;border-radius:9px;font-size:23px}.top small{color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+main{padding:32px 0 60px}.hero{padding:40px 0 25px}.overline{color:var(--accent);font-weight:850;font-size:12px;letter-spacing:2.5px}.hero h1{max-width:950px;font-size:clamp(39px,6.4vw,83px);letter-spacing:-.065em;line-height:.98;margin:16px 0}.hero h1 em{font-style:normal;color:var(--accent)}.lead{color:#d4dfce;font-size:clamp(16px,1.7vw,21px);line-height:1.5;max-width:770px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.dashboard{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(285px,.8fr);gap:20px}.sidebar{display:grid;gap:18px;align-content:start}.section-title{font-size:27px;line-height:1.12;letter-spacing:-1px;margin:5px 0 14px}.panel p{color:var(--muted);line-height:1.5}.btn{background:var(--accent);color:#101510;border:1px solid var(--accent);padding:14px 18px;border-radius:13px;font-weight:850;line-height:1.1}.btn.alt{background:transparent;color:var(--ink);border-color:#73846e}.btn.dark{background:#0e150f;color:var(--ink);border-color:#54634f}.btn.small{padding:10px 13px;font-size:13px}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.input{width:100%;background:#0e160f;color:var(--ink);border:1px solid #6b7b6b;border-radius:12px;padding:15px;margin:5px 0 15px;outline:none}.input:focus{border-color:var(--accent)}.label{display:block;font-weight:800;font-size:13px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:5px;border:1px solid #687a67;border-radius:30px;padding:7px 12px;font-size:12px;font-weight:850;letter-spacing:.6px}.pill.live{border-color:var(--accent);color:var(--accent)}.status{color:var(--muted);font-size:14px;line-height:1.4}.code{font-size:clamp(32px,6vw,62px);font-weight:950;letter-spacing:6px;color:var(--accent);margin:6px 0}.linkbox{padding:12px;background:#101710;border:1px solid #4b6247;border-radius:10px;overflow-wrap:anywhere;font-size:12px;line-height:1.45}.problem{background:#462a26;color:#ffd0c4;border:1px solid #b66b5e;padding:13px 16px;border-radius:12px;margin:16px 0}.hidden{display:none!important}.info{padding:14px 17px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:14px;line-height:1.5}.info strong{color:var(--ink)}.large-info{font-size:22px;line-height:1.3;color:var(--ink)}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kpi{background:#101710;padding:15px;border:1px solid #364835;border-radius:14px}.kpi b{display:block;font-size:31px;color:var(--accent)}.kpi span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:800}.question{margin:14px 0 23px;font-size:clamp(24px,3.4vw,44px);letter-spacing:-1.6px;line-height:1.14;font-weight:900}.choices{display:grid;gap:12px}.choice{width:100%;text-align:left;display:flex;gap:16px;align-items:center;padding:16px;border-radius:14px;background:#141d15;color:var(--ink);border:1px solid #6a7b68;font-size:16px;line-height:1.36}.choice:hover:enabled,.choice:focus-visible:enabled{border-color:var(--accent);background:#223020}.choice .letter{flex:none;display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:#142011;font-weight:950;border-radius:10px}.choice.picked{border:2px solid var(--accent);background:#263825}.choice.correct{border:2px solid var(--good)}.choice.wrong{border:2px solid var(--bad)}.chartline{margin:11px 0}.chartlabel{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:6px}.track{height:13px;border-radius:8px;background:#354334;overflow:hidden}.fill{height:100%;background:var(--accent);border-radius:8px}.score-row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid #3d4d3c}.score-row b{font-size:17px}.score-row small{font-size:13px;color:var(--accent);white-space:nowrap}.answerbox{padding:18px;background:#23321f;border-left:4px solid var(--accent);border-radius:10px}.answerbox b{color:var(--accent)}.answerbox p{margin:10px 0 0;color:var(--ink)}.footer{color:#91a18f;border-top:1px solid var(--line);padding:22px 0 30px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}.obs body{background:transparent}.obs-layout{min-height:calc(100vh - 145px);display:flex;flex-direction:column;justify-content:center}.obs-layout .hero h1{font-size:clamp(48px,8vw,116px)}.obs-layout .question{font-size:clamp(28px,3.6vw,60px)}.obs-layout .choice{font-size:24px;padding:21px}.num{font-size:12px;color:var(--accent);letter-spacing:1.5px;font-weight:800}.flex-between{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.two-thirds{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}.help{font-size:13px;color:var(--muted);margin-top:14px}.link-btn{background:none;border:none;color:var(--accent);text-decoration:underline;padding:0}.minor{font-size:13px;color:#a7b8a4}@media(max-width:760px){.dashboard,.grid,.two-thirds{grid-template-columns:1fr}.top{min-height:64px}.top small{display:none}.panel{padding:18px}.hero{padding:18px 0}.kpis{grid-template-columns:repeat(3,1fr)}.kpi{padding:11px}.kpi b{font-size:24px}.code{letter-spacing:3px}.obs-layout .choice{font-size:17px}}@media(prefers-reduced-motion:no-preference){button{transition:.14s ease}}
+</style>
+<script src="../config.js"></script>
+<script src="../core.js"></script>
+</head>
+<body>
+<header class="top wrap"><div class="wordmark"><span class="symbol">✳</span> MAV PULSE <span class="minor">/ MISSÃO NOVA</span></div><small>WEBINAR · PROVA SOCIAL NO MARKETING</small></header>
+<main class="wrap">
+<section id="home">
+ <div class="hero"><span class="overline">EXERCÍCIO INTERATIVO / 03 DECISÕES</span><h1>Não basta ter<br><em>boas avaliações.</em></h1><p class="lead">A marca fictícia NOVA vende mochilas urbanas. Ajude-a a transformar opiniões de clientes em informação útil para quem está a decidir.</p></div>
+ <div class="grid"><article class="panel"><span class="overline">E-TUTOR</span><h2 class="section-title">Controlar a sessão</h2><p>Inicie e revele cada desafio, acompanhe as respostas e mostre os resultados no OBS.</p><a class="btn" href="?modo=apresentador" style="display:inline-block;text-decoration:none">Entrar como apresentador →</a></article><article class="panel"><span class="overline">FORMANDOS</span><h2 class="section-title">Participar no exercício</h2><p>Introduza o código, escolha um nome e responda às três decisões no telemóvel.</p><a class="btn alt" href="?modo=participar" style="display:inline-block;text-decoration:none">Entrar como participante →</a></article></div>
+</section>
+<section id="host" class="hidden">
+ <div class="hero"><span class="overline">PAINEL PRIVADO / APRESENTADOR</span><h1>Missão <em>NOVA.</em></h1><p class="lead">Três decisões. Uma marca. Resultados sincronizados com a transmissão.</p></div>
+ <div id="hostLogin" class="panel" style="max-width:620px">
+   <h2 class="section-title">Acesso do apresentador</h2>
+   <p>Utilize o mesmo e-mail e a palavra-passe do painel MAV Pulse. Se já tiver uma sessão autenticada neste navegador, pode deixar os campos em branco.</p>
+   <label class="label" for="hostEmail">E-mail</label><input class="input" type="email" id="hostEmail" autocomplete="username" placeholder="E-mail do apresentador">
+   <label class="label" for="hostPass">Palavra-passe</label><input class="input" type="password" id="hostPass" autocomplete="current-password" placeholder="Palavra-passe">
+   <div class="actions"><button class="btn" id="hostCreate">Criar nova sessão →</button><button class="btn alt hidden" id="hostResume">Retomar sessão</button></div>
+   <div class="problem hidden" id="hostError" role="alert"></div>
+   <p class="help">A atividade necessita da instalação de <a href="instalar.sql">instalar.sql</a> no SQL Editor do Supabase. O jogo anterior não é alterado.</p>
+ </div>
+ <div id="hostBoard" class="dashboard hidden">
+  <div class="sidebar">
+   <article class="panel">
+    <div class="flex-between"><span class="overline">CÓDIGO DA SESSÃO</span><span class="pill live">Em direto</span></div>
+    <div class="code" id="hostCode">------</div>
+    <div class="linkbox" id="playerLink"></div>
+    <div class="actions" style="margin-top:15px"><button class="btn small alt" id="copyJoin">Copiar link</button><button class="btn small dark" id="openObs">Abrir vista OBS ↗</button></div>
+   </article>
+   <article class="panel"><span class="overline">CONTROLO DE JOGO</span><h2 class="section-title" id="hostPhase">Sala de espera</h2><p id="hostPrompt">Quando estiver preparado, inicie a primeira decisão.</p><div class="actions" id="hostButtons"></div><div class="problem hidden" id="hostActionError"></div></article>
+   <article class="panel"><span class="overline">DECISÃO ATUAL</span><h2 class="section-title" id="hostQuestion">A aguardar</h2><p id="hostCase"></p></article>
+  </div>
+  <div class="sidebar">
+   <article class="panel"><span class="overline">PÚBLICO / EM DIRETO</span><div class="kpis"><div class="kpi"><b id="hostOnline">0</b><span>Ligados</span></div><div class="kpi"><b id="hostPlayers">0</b><span>Inscritos</span></div><div class="kpi"><b id="hostAnswered">0</b><span>Responderam</span></div></div><p class="help">«Ligados» corresponde ao jogo, não aos espectadores no YouTube.</p></article>
+   <article class="panel"><span class="overline">RESULTADOS DA DECISÃO</span><div id="hostDistribution" class="status">Sem respostas.</div></article>
+   <article class="panel"><span class="overline">CLASSIFICAÇÃO GERAL</span><div id="hostLeaderboard" class="status">A aguardar participantes.</div></article>
+  </div>
+ </div>
+</section>
+<section id="player" class="hidden">
+ <div class="hero"><span class="overline">FORMANDOS / PARTICIPAÇÃO</span><h1>O que faria<br>pela <em>NOVA?</em></h1><p class="lead">Três situações de marketing. Escolha a resposta que melhor ajuda um consumidor a decidir com confiança.</p></div>
+ <div class="panel" id="playerLogin" style="max-width:600px"><h2 class="section-title">Entrar na sessão</h2><label class="label" for="playerCode">Código de seis caracteres</label><input id="playerCode" class="input" maxlength="6" autocomplete="off" placeholder="Ex.: ABC123"><label class="label" for="playerName">Nome a apresentar no ranking</label><input id="playerName" class="input" maxlength="32" autocomplete="nickname" placeholder="O seu nome ou pseudónimo"><button class="btn" id="playerEnter">Participar →</button><div class="problem hidden" id="playerError" role="alert"></div><p class="help">Utilize um pseudónimo se não quiser apresentar o nome completo no ranking.</p></div>
+ <div id="playerBoard" class="grid two-thirds hidden">
+  <article class="panel"><span class="overline" id="playerTag">SALA DE ESPERA</span><h2 class="section-title" id="playerTitle">O apresentador ainda não iniciou o exercício.</h2><p id="playerDesc">Pode manter esta página aberta enquanto acompanha o webinar no YouTube.</p><div id="playerChoices" class="choices"></div><div class="problem hidden" id="playerActionError"></div><div id="playerFeedback" class="hidden"></div></article>
+  <article class="panel"><span class="overline">A MINHA PARTICIPAÇÃO</span><h2 class="section-title" id="playerIdentity"></h2><div class="kpis"><div class="kpi"><b id="playerScore">0</b><span>Pontos</span></div><div class="kpi"><b id="playerRound">0/3</b><span>Ronda</span></div><div class="kpi"><b>300</b><span>Máximo</span></div></div><div id="playerRanking" style="margin-top:18px"></div><p class="help">Cada resposta certa vale 100 pontos. Não existe penalização por tempo de resposta.</p></article>
+ </div>
+</section>
+<section id="obs" class="hidden obs-layout">
+ <div class="hero"><span class="overline">MAV PULSE / TRANSMISSÃO</span><h1>Missão <em>NOVA.</em></h1><p class="lead" id="obsPhase">A aguardar o início da atividade</p></div>
+ <div id="obsContent" class="grid two-thirds"><article class="panel"><span class="overline">DESAFIO INTERATIVO</span><h2 class="section-title">Prova social no marketing</h2><p>Os formandos entram com o código mostrado pelo apresentador e respondem no telemóvel.</p></article></div>
+ <div id="obsError" class="problem hidden"></div>
+</section>
+</main>
+<footer class="footer"><div class="wrap">MAV PULSE · PROVA SOCIAL NO MARKETING · MISSÃO NOVA · EXEMPLO PEDAGÓGICO FICTÍCIO</div></footer>
+<script>
+(function(){
+'use strict';
+var TITLE='Prova social | Missão NOVA';
+var Q=[
+ {no:1,topic:'VISIBILIDADE',title:'Onde mostrar os testemunhos?',context:'A NOVA tem comentários detalhados sobre conforto, capacidade e resistência das mochilas. Onde deve apresentá-los para ajudar quem está a comparar produtos?',answers:['Apenas na página inicial da loja','Na página de produto, perto da informação relevante','Só num destaque temporário das redes sociais'],correct:'B',explain:'O testemunho é mais útil junto da decisão concreta, quando o consumidor consulta características, preços e condições.'},
+ {no:2,topic:'REPUTAÇÃO',title:'Como responder a uma crítica legítima?',context:'Um cliente escreve: “A mochila chegou atrasada e não recebi informação sobre o envio.” Como deve reagir a marca?',answers:['Apagar o comentário para proteger a imagem','Oferecer um desconto, sem investigar a situação','Reconhecer o problema e disponibilizar acompanhamento concreto'],correct:'C',explain:'A marca deve reconhecer a experiência e procurar uma solução, mantendo o respeito e sem divulgar dados pessoais.'},
+ {no:3,topic:'MÉTRICAS',title:'Como medir o impacto?',context:'A NOVA colocou avaliações relevantes nas páginas dos produtos. Como pode analisar se estão a ajudar as decisões de compra?',answers:['Relacionar interação com avaliações e comportamento de conversão','Contar apenas os gostos das publicações','Observar apenas a média de estrelas'],correct:'A',explain:'É necessário cruzar indicadores e comparar contextos semelhantes. Uma alteração de vendas não se explica por uma única métrica.'}
+];
+var P={c:null,s:null,stats:null,me:null,name:'',role:'',working:false,timer:null};
+function E(id){return document.getElementById(id)}
+function text(id,value){E(id).textContent=String(value==null?'':value)}
+function escapeHTML(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function error(id,msg){var el=E(id);el.textContent=msg&&msg.message?msg.message:String(msg);el.classList.remove('hidden')}
+function clearError(id){E(id).classList.add('hidden')}
+function urlFor(mode){var u=new URL(location.href);u.search='';u.searchParams.set('modo',mode);return u}
+function playerURL(){var u=urlFor('participar');u.searchParams.set('codigo',P.s.code);return u.href}
+function obsURL(){var u=urlFor('transmissao');u.searchParams.set('s',P.s.id);return u.href}
+function qs(k){return new URLSearchParams(location.search).get(k)||''}
+function current(){return Q.find(function(x){return x.no===P.s.slide})}
+function statsCounts(){return P.stats&&P.stats.counts?P.stats.counts:{A:0,B:0,C:0}}
+function people(){return P.stats&&P.stats.players?P.stats.players:[]}
+function leaderboard(limit){var players=people();if(!players.length)return '<p class="status">Ainda não há participantes.</p>';return players.slice(0,limit||10).map(function(p,i){return '<div class="score-row"><span><b>'+String(i+1)+'. '+escapeHTML(p.name)+'</b></span><small>'+Number(p.points||0)+' pts</small></div>'}).join('')}
+function bars(){var counts=statsCounts(),total=Number(P.stats&&P.stats.answers||0);return ['A','B','C'].map(function(a){var n=Number(counts[a]||0);var width=total?Math.round(n*100/total):0;return '<div class="chartline"><div class="chartlabel"><span>Opção '+a+'</span><span>'+n+' · '+width+'%</span></div><div class="track"><div class="fill" style="width:'+width+'%"></div></div></div>'}).join('')}
+async function loadStats(){if(!P.s)return null;var r=await P.c.sb.rpc('ps_stats',{p_session_id:P.s.id});if(r.error)throw r.error;P.stats=r.data;return P.stats}
+async function refresh(){if(!P.s)return;P.s=await P.c.refresh()}
+function polling(render){if(P.timer)clearInterval(P.timer);P.timer=setInterval(async function(){if(P.working)return;P.working=true;try{await refresh();await render()}catch(e){console.warn('Atualização:',e.message)}finally{P.working=false}},2800)}
+async function hostAuth(){var email=E('hostEmail').value.trim(),pass=E('hostPass').value;if(email||pass){if(!email||!pass)throw Error('Introduza o e-mail e a palavra-passe.');await P.c.login(email,pass)}else{var u=await P.c.getAuthUser();if(!u||u.is_anonymous)throw Error('Introduza as credenciais do apresentador.')} }
+function isNova(s){return s&&s.title===TITLE}
+async function hostStart(){E('hostLogin').classList.add('hidden');E('hostBoard').classList.remove('hidden');localStorage.setItem('ps_last_session',P.s.id);await P.c.watch('presenter');await hostRender();polling(hostRender)}
+async function hostRender(){await loadStats();var s=P.s;var q=current();text('hostCode',s.code);text('playerLink',playerURL());text('hostOnline',P.c.getOnline());text('hostPlayers',people().length);text('hostAnswered',P.stats.answers);text('hostQuestion',q?q.title:'A primeira decisão ainda não começou');text('hostCase',q?q.context:'Partilhe o código e inicie a atividade quando estiver preparado.');text('hostPhase',s.phase==='lobby'?'Sala de espera':s.phase==='playing'?'Decisão '+s.slide+' / 3 · A responder':'Decisão '+s.slide+' / 3 · Resultados');text('hostPrompt',s.phase==='lobby'?'Os formandos podem entrar com o nome e o código.':s.phase==='playing'?'Pode revelar as respostas quando decidir, sem obrigar os formandos a responder rapidamente.':s.slide<3?'Discuta o resultado e passe à decisão seguinte.':'Atividade concluída. Pode apresentar a classificação final.');E('hostDistribution').innerHTML=bars();E('hostLeaderboard').innerHTML=leaderboard(12);
+var buttons=E('hostButtons');buttons.textContent='';
+var button=document.createElement('button');button.className='btn';
+if(s.phase==='lobby'){button.textContent='Iniciar decisão 1 →';button.onclick=function(){hostChange({slide:1,phase:'playing'})}}
+else if(s.phase==='playing'){button.textContent='Revelar respostas →';button.onclick=function(){hostChange({phase:'results'})}}
+else if(s.slide<3){button.textContent='Iniciar decisão '+(s.slide+1)+' →';button.onclick=function(){hostChange({slide:s.slide+1,phase:'playing'})}}
+else{button.textContent='3 decisões concluídas';button.disabled=true}
+buttons.append(button)}
+async function hostChange(patch){try{clearError('hostActionError');P.s=await P.c.update(patch);await hostRender()}catch(e){error('hostActionError',e)}}
+async function doCreate(){try{clearError('hostError');await hostAuth();P.s=await P.c.createSession();P.s=await P.c.update({title:TITLE,phase:'lobby',slide:0,active_game:null});await hostStart()}catch(e){error('hostError',e)}}
+async function doResume(){try{clearError('hostError');await hostAuth();var id=localStorage.getItem('ps_last_session');P.s=await P.c.getById(id);if(!isNova(P.s))throw Error('A sessão anterior não é uma atividade NOVA.');await hostStart()}catch(e){error('hostError',e)}}
+async function loadMine(){if(!P.s||!current())return null;var r=await P.c.sb.from('prova_social_answers').select('question_no,option_key,points').eq('participant_id',P.c.participantId).eq('question_no',P.s.slide).maybeSingle();if(r.error)throw r.error;P.me=r.data;return P.me}
+async function myPoints(){if(!P.c.participantId)return 0;var r=await P.c.sb.from('prova_social_answers').select('points').eq('participant_id',P.c.participantId);if(r.error)throw r.error;return (r.data||[]).reduce(function(n,a){return n+Number(a.points)},0)}
+function optionsHTML(q){return q.answers.map(function(x,i){var letter='ABC'[i];return '<button type="button" class="choice" data-answer="'+letter+'"><span class="letter">'+letter+'</span><span>'+escapeHTML(x)+'</span></button>'}).join('')}
+async function playerRender(){var q=current(),s=P.s;text('playerIdentity',P.name);text('playerRound',String(Math.max(0,s.slide))+'/3');text('playerScore',await myPoints());E('playerFeedback').classList.add('hidden');E('playerFeedback').textContent='';E('playerRanking').innerHTML='';
+clearError('playerActionError');
+if(s.phase==='lobby'){text('playerTag','SALA DE ESPERA');text('playerTitle','Está na sessão.');text('playerDesc','Aguarde que o apresentador lance a primeira decisão. Pode continuar a acompanhar o webinar no YouTube.');E('playerChoices').innerHTML='';return}
+if(!q)return;
+text('playerTag','DECISÃO '+q.no+' DE 3 · '+q.topic);text('playerTitle',q.title);text('playerDesc',q.context);
+await loadMine();
+if(s.phase==='playing'){
+ if(P.me){E('playerChoices').innerHTML='<div class="answerbox"><b>Resposta enviada: '+escapeHTML(P.me.option_key)+'</b><p>Aguarde que o apresentador revele os resultados.</p></div>'}
+ else {E('playerChoices').innerHTML=optionsHTML(q);E('playerChoices').querySelectorAll('[data-answer]').forEach(function(b){b.onclick=function(){submitAnswer(b.dataset.answer)}})}
+ return;
+}
+if(s.phase==='results'){
+ E('playerChoices').innerHTML='<div class="answerbox"><b>Resposta recomendada: '+escapeHTML(q.correct)+'</b><p>'+escapeHTML(q.explain)+'</p></div>';
+ var box=E('playerFeedback');box.classList.remove('hidden');box.innerHTML='<p class="large-info">'+(P.me?(P.me.points===100?'Resposta correta · +100 pontos':'Resposta registada · 0 pontos'):'Não respondeu a esta decisão.')+'</p>';
+ try{await loadStats();E('playerRanking').innerHTML='<span class="overline">CLASSIFICAÇÃO GERAL</span>'+leaderboard(8)}catch(e){E('playerRanking').textContent='Os resultados estão a ser disponibilizados.'}
+ }}
+async function submitAnswer(letter){try{clearError('playerActionError');E('playerChoices').querySelectorAll('button').forEach(function(b){b.disabled=true});var r=await P.c.sb.rpc('ps_submit',{p_session_id:P.s.id,p_question_no:P.s.slide,p_option_key:letter});if(r.error)throw r.error;await playerRender()}catch(e){error('playerActionError',e);await playerRender()}}
+async function join(){try{clearError('playerError');var code=E('playerCode').value.trim().toUpperCase(),name=E('playerName').value.trim();await P.c.join(code,name);if(!isNova(P.c.session))throw Error('Este código não pertence à Missão NOVA.');P.s=P.c.session;P.name=name;E('playerLogin').classList.add('hidden');E('playerBoard').classList.remove('hidden');await P.c.watch('player');await playerRender();polling(playerRender)}catch(e){error('playerError',e)}}
+async function obsRender(){var s=P.s,q=current();var holder=E('obsContent');text('obsPhase',s.phase==='lobby'?'Os participantes estão a entrar na sala de espera.':s.phase==='playing'?'Os participantes estão a responder no telemóvel.':'Resultados da decisão '+s.slide+' / 3');
+if(s.phase==='lobby'){holder.innerHTML='<article class="panel"><span class="overline">PREPARAR A ATIVIDADE</span><h2 class="section-title">A aguardar o apresentador.</h2><p>O primeiro desafio surgirá automaticamente quando a sessão começar.</p></article>';return}
+if(!q)return;
+var main='<article class="panel"><span class="overline">DECISÃO '+s.slide+'/3 · '+escapeHTML(q.topic)+'</span><h2 class="question">'+escapeHTML(q.title)+'</h2><p>'+escapeHTML(q.context)+'</p>';
+if(s.phase==='playing'){main+=q.answers.map(function(a,i){return '<div class="choice"><span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+escapeHTML(a)+'</span></div>'}).join('')}
+else{main+='<div class="answerbox"><b>Opção '+q.correct+'</b><p>'+escapeHTML(q.explain)+'</p></div>'}
+main+='</article>';var side='<article class="panel"><span class="overline">MISSÃO NOVA</span><h2 class="section-title">'+(s.phase==='playing'?'A aguardar respostas':'A escolha do grupo')+'</h2>';
+if(s.phase==='results'){try{await loadStats();side+=bars()+'<p class="overline">CLASSIFICAÇÃO</p>'+leaderboard(5)}catch(e){side+='<p>Não foi possível obter resultados.</p>'}}
+else{side+='<p>O apresentador irá revelar os resultados quando todos tiverem oportunidade de participar.</p><p class="code">0'+s.slide+' / 03</p>'}
+holder.innerHTML=main+'</article>'.replace('</article></article>','</article>')+side+'</article>';
+}
+async function obsStart(){try{var sid=qs('s');if(!/^[0-9a-f-]{36}$/i.test(sid))throw Error('Abra esta vista a partir do painel do apresentador.');await P.c.ensureAnonymous();P.s=await P.c.getById(sid);if(!isNova(P.s))throw Error('Sessão inválida.');await P.c.watch('viewer');await obsRender();polling(obsRender)}catch(e){error('obsError',e)}}
+async function init(){
+ var mode=qs('modo')||'inicio';var ids={inicio:'home',apresentador:'host',participar:'player',transmissao:'obs'};if(!ids[mode])mode='inicio';
+ Object.keys(ids).forEach(function(k){E(ids[k]).classList.toggle('hidden',k!==mode)});
+ if(mode==='inicio')return;
+ try{P.c=new JornadaClient();await P.c.init();if(!P.c.live)throw Error('A ligação ao Supabase não está configurada no repositório.')}
+ catch(e){var msg='Não foi possível iniciar a ligação: '+(e.message||String(e));if(mode==='apresentador')error('hostError',msg);else if(mode==='participar')error('playerError',msg);else error('obsError',msg);return}
+ if(mode==='apresentador'){
+ E('hostCreate').onclick=doCreate;E('hostResume').onclick=doResume;
+ if(localStorage.getItem('ps_last_session'))E('hostResume').classList.remove('hidden');
+ E('copyJoin').onclick=async function(){try{await navigator.clipboard.writeText(playerURL());text('copyJoin','Copiado ✓')}catch(e){window.prompt('Copie o link:',playerURL())}};
+ E('openObs').onclick=function(){window.open(obsURL(),'_blank')};
+ }else if(mode==='participar'){
+ E('playerCode').value=qs('codigo').toUpperCase();
+ E('playerEnter').onclick=join;
+ }else await obsStart();
+}
+init();
+})();
+</script>
+</body>
+</html>
